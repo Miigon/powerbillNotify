@@ -1,0 +1,41 @@
+serverQueryUrl: "http://192.168.84.3:9090/cgcSims/selectList.do"
+
+# clientField:
+#   192.168.84.1    北校区
+#   192.168.84.110  南校区
+#   172.21.101.11   西丽校区
+#   192.168.84.87   深大新斋区
+clientField: "192.168.84.87"
+
+roomId: 19666 # 自行抓包获取
+roomName: 606 # 必须与 roomId 对应
+building: "红豆斋" # 理论上不需要填写
+
+conditions: # 发送通知的条件
+  nDaysAveragePastUsage: 5 # 获取过去多少天的平均用电量
+
+  notifyNearRunningOut: true # 若电量即将耗尽
+  daysLeftThreshold: 4
+
+  notifyAbnormallyHigh: true # 若昨天用电相比前 n-1 天而言异常地高
+  highUsageThreshold: 1.5
+
+templates:
+  nearRunningOut:
+    title: 宿舍电量提醒：${BUILDING} ${ROOM} 电量仅剩 ${DAYSLEFT} 天
+    content: "${BUILDING} ${ROOM} 剩余可用电量 ${POWERLEFT} 度，\
+仍可用 ${DAYSLEFT} 天，请及时充值（根据过去 ${PASTNDAYS} 天的日平均使用量 ${NDAYSAVERAGE} 度计算）。"
+  abnormallyHigh:
+    title: 宿舍异常用电提醒：${BUILDING} ${ROOM} 昨日用电 ${POWERYESTERDAY} 度
+    content: "${BUILDING} ${ROOM} 昨日用电 ${POWERYESTERDAY} 度，\
+明显高于之前 ${PASTNDAYS_MINUS_1} 天内的平均日使用量 ${N_MINUS_1_DAYSAVERAGE} 度，请知悉。"
+
+email:
+  sender:
+    smtpServer: smtp.qq.com
+    smtpPort: 587
+    username: xxxxx@qq.com
+    password: YOUR_SMTP_PASSWORD
+  recipients:
+    - xxxxxxxxxx@email.szu.edu.cn
+    - yyyyyyyyyy@email.szu.edu.cn
