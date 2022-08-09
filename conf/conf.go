@@ -36,6 +36,7 @@ var Config struct {
 			Password   string `yaml:"password"`
 		} `yaml:"sender"`
 		Recipients []string `yaml:"recipients"`
+		DevEmails  []string `yaml:"devEmails"`
 	} `yaml:"email"`
 }
 

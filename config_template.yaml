@@ -39,3 +39,5 @@ email:
   recipients:
     - xxxxxxxxxx@email.szu.edu.cn
     - yyyyyyyyyy@email.szu.edu.cn
+  devEmails:
+    - devmailxxxxxx@email.szu.edu.cn
